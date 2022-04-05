@@ -1,0 +1,31 @@
+<html lang="zh-CN">
+  <head>
+   
+  </head>
+
+  <body>
+  我在7005端口
+  <button id='login'>同域请求（将请求7005端口）</button>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+  const baseURL = 'http://127.0.0.1:7005/api';
+const url = {
+    login: `${baseURL}/login`
+}
+const instance = axios.create({
+    baseURL,
+    timeout: 3 * 1000,
+    headers: {
+        withCredentials: true
+    }
+  
+})
+    const dom = document.getElementById('login');
+    console.log(dom)
+    dom.onclick=()=>{
+      instance.post(url.login, { type: "h5", user_id: "1111" } )
+      console.log('hello world');
+    }
+  </script>
+</html>
